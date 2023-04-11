@@ -43,6 +43,11 @@ interface IAgreementActions {
     function isValid() external view returns(bool);
 
     /**
+     * @notice checks if the contract can currently be modified 
+     */
+    function isPaused() external view returns(bool);
+
+    /**
      * @notice fetch an entire body section of the messageIndex array
      *  [Sections][1] [{Message}, {Message}, {Message}]
      */
@@ -66,7 +71,7 @@ interface IAgreementActions {
      * @notice this method can be called at any time before signing to update an 
      *  individual subsection of the agreement this is cheaper than deleting and reuploading
      */
-    function updateMessage(MessageParams calldata _message) external returns (Message memory oldMsg, Message memory newMsg);
+    function updateMessage(MessageParams calldata _message) external returns (Message memory oldMsg);
 
     /**
      * @notice This method allows for the removal of a subSection of the agreement
@@ -76,9 +81,12 @@ interface IAgreementActions {
      */
     function remove(MessageParams calldata _message) external returns(Message memory deletedMsg);
 
-     /**
+
+    function manageReviewStatus() external;
+
+    /**
      * @notice This function must be called by both partyA and partyB
      *  for this agreement to be valid 
      */
-    function approve(address _signer) external;
+    function approve() external;
 }

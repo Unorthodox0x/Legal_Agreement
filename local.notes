@@ -1,38 +1,13 @@
 This system is setup to create a contact between two agreeing parties. 
 
+After deciding on the contents of their agreement, both parties commit their message to a factory deployed Unique agreement smart Conract.
+
 This system is built to be scalable, servicing any two parties who wish to sign content and store it on chain.
-
-
 
 [BASE FUNCTIONALITY]
 
 Two parties write down a list of requirements, or stipulations to be agreed upon. 
-Once Complete, the contents of this message are sent to a smart contract, where the contents are indefinitely stored.
-
-
-
-///RATHER THAN QUERYING THE CONTRACT FOR INDIVIDUAL SEQUENCES INSIDE OF IT
-///THE SIGNER OF THE CONTRACT SHOULD BE ABLE TO CALL THE CONTRACT TO REQUEST THE ENTIRE BODY OF THE MESSAGE STORED WITHIN
-
-
-
-
-
-///MESSAGE APPEND METHODOLOGY
-///TO REDUCE GAS, THIS CONTRACT ASSUME THAT BOTH PARTIES WILL HAVE FULLY AGREED UPON THEIR MESSAGE BEFORE APPENDING AND SIGNATURE
-///BOTH PARTIES WILL UPLOAD A THE MESSAGE TO THE CONTRACT, WHICH WILL BE PARSED AND STORED INTO A NESTED MAPPING [Section][Sub-section][text]Agreement
-///A CHECK SUM CAN BE CONDUCTED TO VERIFY THAT THE MESSAGE SUBMITTED BY BOTH PARTIES IS EQUIVALENT [THIS WILL BE A SECURITY CONCERN]
-///IF EITHER PARTY WISHES TO VIEW THE TEXT STORED WITHING THE AGREEMENT THEIR SIGNATURE FROM THEIR WALLET CAN BE USED TO DECODE THE MESSAGE
-
-
-
-
-///SINCE THE MESSAGE IS ENCODED WITH THE SIGNER'S SIGNATURE UPON APPENDING THE MESSAGE TO THE AGREEMENT
-
-
-
-
-
+Once Complete, the contents of this message are sent to a smart contract, where the contents are stored on chain.
 
 
 
@@ -45,9 +20,6 @@ Req:
 
 
 [VERIFICATION]
-
-
-
 
 |DATA STORAGE|
 	1. gas.
@@ -69,21 +41,14 @@ Req:
 				     * This method can prevent collision by guarenteeing message uniqueness.
 
 [SECURITY]
-The only way to ensure privacy of an agreement is for users to sign the body of each section independently 
-off chain. This is because if any attempt to encrypt a message relies on onChain functionality, the message 
-being encrypted will always initially be public to miners and others surverying onChain data.
+	The only way to ensure privacy of an agreement is for users to sign the body of each section independently 
+	off chain. This is because if any attempt to encrypt a message relies on onChain functionality, the message 
+	being encrypted will always initially be public to miners and others surverying onChain data.
 
-The main Security concerns are 
-	- partyA and partyB should be able to verify that the message is the message both parties agreeded upon off chain.
-	- after commiting message on Chain no party should be able to alter the body of the message.
+	The main Security concerns are 
+		- partyA and partyB should be able to verify that the message is the message both parties agreeded upon off chain.
+		- after commiting message on Chain no party should be able to alter the body of the message.
 
-	- No party should be able to update this agreement unless they are one of the initial parties in the agreement.
-	- No updates shall be made to this agreement unless agreed upon by both parties.
-	- Updating the message needs to be done in a way that does not invalidate the initial agreement.
-
-
-
-
-
-[GAS SAVING MODIFICATIONS]
-DEPLOYING THROUGH CLONES
+		- No party should be able to update this agreement unless they are one of the initial parties in the agreement.
+		- No updates shall be made to this agreement unless agreed upon by both parties.
+		- Updating the message needs to be done in a way that does not invalidate the initial agreement.

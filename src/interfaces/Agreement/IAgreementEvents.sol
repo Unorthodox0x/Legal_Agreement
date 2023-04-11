@@ -15,6 +15,14 @@ interface IAgreementEvents {
     /// @param party, the address of the party that signed the agreement
     event Approved(address agreement, address party);
 
+    /// @notice Emitted when either partyA or partyB wishes to pause modifications 
+    /// to the agreement in prepaparation for signing agreement
+    event Paused(address agreement);
+
+    /// @notice Emitted in the manageReviewStatus function only if the pauseA && pauseB
+    /// variables are both updated from 2, back to 1 (default);
+    event UnPaused(address agreement);
+
     /// @notice Emitted exactly once by an agreement once both parties attributed 
     /// to the agreement have signed the message
     /// @param agreement the address of the agreement 

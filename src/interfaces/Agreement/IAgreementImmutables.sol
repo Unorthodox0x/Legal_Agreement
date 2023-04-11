@@ -29,6 +29,14 @@ interface IAgreementImmutables {
     /// @notice Has the agreement been signed by partyB;
     function approvedB() external view returns (uint256);
 
+    /// @notice the status of partyA's contract review request
+    /// @dev if == 2, contract is paused
+    function pauseA() external view returns (uint256);
+
+    /// @notice the status of partyB's contract review request
+    /// @dev if == 2, contract is paused
+    function pauseB() external view returns (uint256);
+
     /// @notice Has the agreement been signed by both parties;
     ///@dev approvedA && approvedB
     function verified() external view returns (uint256);
